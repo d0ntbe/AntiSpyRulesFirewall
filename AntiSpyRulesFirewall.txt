@@ -1,0 +1,54 @@
+netsh advfirewall firewall add rule name="BLOCKED_MICROSOFT_1" interface=any dir=in action=block remoteip=23.218.92.242
+netsh advfirewall firewall add rule name="BLOCKED_MICROSOFT_1" interface=any dir=out action=block remoteip=23.218.92.242
+netsh advfirewall firewall add rule name="BLOCKED_MICROSOFT_2" interface=any dir=in action=block remoteip=23.218.92.208
+netsh advfirewall firewall add rule name="BLOCKED_MICROSOFT_2" interface=any dir=out action=block remoteip=23.218.92.208
+netsh advfirewall firewall add rule name="BLOCKED_MICROSOFT_3" interface=any dir=in action=block remoteip=23.218.92.160
+netsh advfirewall firewall add rule name="BLOCKED_MICROSOFT_3" interface=any dir=out action=block remoteip=23.218.92.160
+netsh advfirewall firewall add rule name="BLOCKED_MICROSOFT_4" interface=any dir=in action=block remoteip=23.218.92.168
+netsh advfirewall firewall add rule name="BLOCKED_MICROSOFT_4" interface=any dir=out action=block remoteip=23.218.92.168
+netsh advfirewall firewall add rule name="sb_scorecardresearch_com_1" interface=any dir=in action=block remoteip=13.33.242.101
+netsh advfirewall firewall add rule name="sb_scorecardresearch_com_1" interface=any dir=out action=block remoteip=13.33.242.101
+netsh advfirewall firewall add rule name="sb_scorecardresearch_com_2" interface=any dir=in action=block remoteip=13.33.242.123
+netsh advfirewall firewall add rule name="sb_scorecardresearch_com_2" interface=any dir=out action=block remoteip=13.33.242.123
+netsh advfirewall firewall add rule name="Microsoft_1" interface=any dir=in action=block remoteip=168.62.57.154
+netsh advfirewall firewall add rule name="Microsoft_1" interface=any dir=out action=block remoteip=168.62.57.154
+
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+
+ssdp discovery off:
+
+cmd - > services.msc -> ssdp discovery -> stop; properties -> disable -> apply
+
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+How to get any open ports: 
+
+netstat -a -b 
+
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+Block port 
+
+netsh advfirewall firewall add rule name=”allow80” protocol=TCP dir=out localport=80 action=block
+
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+NetBIOS off:
+
+netwirk -> adapter options -> WINS -> Disable NBNS
+
+or:
+
+net stop "TCP/IP NetBIOS Helper"
+net stop netbt
+ 
+sc config netbt start= disabled
+sc config lmhosts start= disabled
+
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
